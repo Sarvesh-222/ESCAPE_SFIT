@@ -97,7 +97,7 @@ jump_velocity = 6.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8, 0.5, 31)
 
 [node name="Barrel" parent="." instance=ExtResource("3_8gbba")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0.5, 30.7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9, 3.4, 28.3)
 
 [node name="Walls" type="Node" parent="."]
 
@@ -163,6 +163,9 @@ text = "JOIN"
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://bs72ogkvdd7d6")
 spawn_path = NodePath("..")
+
+[node name="NewCHEST" parent="." instance=ExtResource("3_jjvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.5, 30.6)
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
