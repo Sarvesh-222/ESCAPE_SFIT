@@ -167,5 +167,8 @@ spawn_path = NodePath("..")
 [node name="NewCHEST" parent="." instance=ExtResource("3_jjvhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2.5, 30.6)
 
+[node name="NewCHEST2" parent="." instance=ExtResource("3_jjvhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8, 0.5, 30.6)
+
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
