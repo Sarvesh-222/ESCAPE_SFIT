@@ -87,7 +87,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	# If freeflying, handle freefly and nothing else
-	if(is_multiplayer_authority()):
+	if(true):#is_multiplayer_authority()):
 		if can_freefly and freeflying:
 			var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 			var motion := (head.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
