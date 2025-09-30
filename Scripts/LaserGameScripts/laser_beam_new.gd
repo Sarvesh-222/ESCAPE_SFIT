@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends Area3D
 var init_positon_y:=0.0
 var init_positon_x:=0.0
 
@@ -58,3 +58,10 @@ func LeftRight(delta:float):
 				isMovingLeft=false
 				init_positon_x=position.x
 			
+
+
+
+
+
+func _on_body_entered(body: Node3D) -> void:
+	print(body.name)
