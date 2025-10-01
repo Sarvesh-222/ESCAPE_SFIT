@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpjeeofl6rtsn"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_dpep4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwvxl"]
+albedo_color = Color(0.789836, 0.4278, 0, 1)
+metallic = 0.6
+metallic_specular = 0.0
+
+[node name="Button" type="Area3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.216, 0, 0, 0, 0.03, 0, 0, 0, 0.16, 0, 0, 0)
+mesh = SubResource("CylinderMesh_dpep4")
+surface_material_override/0 = SubResource("StandardMaterial3D_kwvxl")
