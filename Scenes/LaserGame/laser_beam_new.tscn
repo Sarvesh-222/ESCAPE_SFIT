@@ -6,6 +6,9 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68xc1"]
 albedo_color = Color(0.733129, 0.469923, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 3.95
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_itbed"]
 
@@ -65,6 +68,7 @@ mesh = SubResource("CylinderMesh_68xc1")
 surface_material_override/0 = SubResource("StandardMaterial3D_68xc1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999994, -2.91027e-11, 4.16334e-17, -5.54219e-13, 0.999991, -7.10543e-13, 2.77556e-17, -2.76486e-10, 0.999994, 0, 0, 0)
 shape = SubResource("CylinderShape3D_itbed")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
