@@ -12,6 +12,8 @@ var init_positon_x:=0.0
 @export var moveSpeed:=10.0
 @export var rotateSpeed:=1.0
 
+@export var spawnPoint: Area3D#= load("res://Scenes/LaserGame/spawn_point.tscn")
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
@@ -80,3 +82,6 @@ func LeftRight(delta:float):
 
 func _on_body_entered(body: Node3D) -> void:
 	print(body.name)
+	body.position=spawnPoint.position
+		
+	
