@@ -1,15 +1,85 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpjeeofl6rtsn"]
+[gd_scene load_steps=9 format=3 uid="uid://cff11beli4hf2"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_dpep4"]
+[ext_resource type="Script" uid="uid://bsu4xu1rx4yej" path="res://Scripts/LaserGameScripts/LaseGameButton.gd" id="1_kwvxl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwvxl"]
-albedo_color = Color(0.789836, 0.4278, 0, 1)
-metallic = 0.6
-metallic_specular = 0.0
+[sub_resource type="SphereMesh" id="SphereMesh_dpep4"]
 
-[node name="Button" type="Area3D"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_kwvxl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fh1ty"]
+albedo_color = Color(0.828434, 0.381261, 0.264697, 1)
+emission_enabled = true
+emission = Color(0.972549, 0, 0, 1)
+emission_energy_multiplier = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kwvxl"]
+height = 0.15
+radius = 0.8
+
+[sub_resource type="Animation" id="Animation_kwvxl"]
+resource_name = "ButtonGlow"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainButton:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 15.4]
+}
+
+[sub_resource type="Animation" id="Animation_fh1ty"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainButton:surface_material_override/0:emission_energy_multiplier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4eum"]
+_data = {
+&"ButtonGlow": SubResource("Animation_kwvxl"),
+&"RESET": SubResource("Animation_fh1ty")
+}
+
+[node name="LaserButton" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_kwvxl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.216, 0, 0, 0, 0.03, 0, 0, 0, 0.16, 0, 0, 0)
-mesh = SubResource("CylinderMesh_dpep4")
-surface_material_override/0 = SubResource("StandardMaterial3D_kwvxl")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_dpep4")
+
+[node name="MainButton" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.1, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_kwvxl")
+surface_material_override/0 = SubResource("StandardMaterial3D_fh1ty")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, 0)
+shape = SubResource("CylinderShape3D_kwvxl")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+text = "Press E To Disable Lasers"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y4eum")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
