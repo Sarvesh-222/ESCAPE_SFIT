@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7b54wfwf8ut4"]
+
+[ext_resource type="Script" uid="uid://ifg1wx33disw" path="res://Scripts/TerminalGameScripts/terminalScript.gd" id="1_ee6kq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ee6kq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 860.0
+offset_bottom = 579.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 594.0
+offset_right = 479.0
+offset_bottom = 640.0
+placeholder_text = "demo"
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
