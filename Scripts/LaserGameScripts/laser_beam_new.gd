@@ -5,10 +5,10 @@ var init_positon_x:=0.0
 @export_group("MODES(SEE EDITOR DESCRIPTION)")
 @export var up_down:=true
 @export var left_right:=false
-@export var rotate:=false
+@export var Rotate:=false
 
 @export_group("ATTRIBUTES")
-@export var range:=50
+@export var Rangee:=50
 @export var moveSpeed:=10.0
 @export var rotateSpeed:=1.0
 
@@ -44,15 +44,15 @@ func UpDown(delta:float):
 		animation_player.play("RotateLaser")
 	
 	if(isMovingUp):   #Up movement
-		if(position.y< init_positon_y+range):
+		if(position.y< init_positon_y+Rangee):
 			position.y+=moveSpeed*delta
-		elif(position.y>= init_positon_y+range):
+		elif(position.y>= init_positon_y+Rangee):
 			isMovingUp=false
 			init_positon_y=position.y
 	else:			#Down MOvement
-		if(position.y> init_positon_y-range):
+		if(position.y> init_positon_y-Rangee):
 			position.y-= moveSpeed*delta
-		elif(position.y<= init_positon_y-range):
+		elif(position.y<= init_positon_y-Rangee):
 			isMovingUp=true
 			init_positon_y=position.y
 			
@@ -63,15 +63,15 @@ func LeftRight(delta:float):
 	
 	
 		if !isMovingLeft:  #Right Movement
-			if position.x<init_positon_x+range:
+			if position.x<init_positon_x+Rangee:
 				position.x+=moveSpeed*delta
-			elif position.x>= init_positon_x+range:
+			elif position.x>= init_positon_x+Rangee:
 				isMovingLeft=true
 				init_positon_x=position.x
 		else:               #lEFT Movement
-			if position.x>init_positon_x-range:
+			if position.x>init_positon_x-Rangee:
 				position.x-=moveSpeed*delta
-			elif position.x<= init_positon_x-range:
+			elif position.x<= init_positon_x-Rangee:
 				isMovingLeft=false
 				init_positon_x=position.x
 			
