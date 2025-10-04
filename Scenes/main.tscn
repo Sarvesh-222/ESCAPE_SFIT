@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c6pjq0knegrw8" path="res://Scenes/extras/wall_corner_2.tscn" id="4_21xkr"]
 [ext_resource type="PackedScene" uid="uid://b8ubeojf3iuwa" path="res://Scenes/extras/wall_arched_2.tscn" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bnprfbw5w86kp" path="res://Scenes/extras/wall_shelved.tscn" id="6_344ge"]
-[ext_resource type="PackedScene" uid="uid://cff11beli4hf2" path="res://Scenes/LaserGame/button.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://cff11beli4hf2" path="res://Scenes/LaserGame/LaserGamebutton.tscn" id="8_344ge"]
 [ext_resource type="PackedScene" uid="uid://b7b54wfwf8ut4" path="res://Scenes/TerminalGame/Terminal.tscn" id="9_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c00u3pwjhjjy7" path="res://Scenes/LaserGame/spawn_point.tscn" id="9_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dpu48vnj1tw1" path="res://Scenes/LaserGame/laser_beam_new.tscn" id="9_ynf5e"]

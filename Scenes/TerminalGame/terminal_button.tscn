@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cff11beli4hf2"]
+[gd_scene load_steps=10 format=3 uid="uid://dfa56iapocwxd"]
 
-[ext_resource type="Script" uid="uid://bsu4xu1rx4yej" path="res://Scripts/LaserGameScripts/LaseGameButton.gd" id="1_kwvxl"]
+[ext_resource type="Script" uid="uid://bsu4xu1rx4yej" path="res://Scripts/LaserGameScripts/GameButton.gd" id="1_4b0xi"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_dpep4"]
 
@@ -70,10 +70,10 @@ _data = {
 &"RESET": SubResource("Animation_fh1ty")
 }
 
-[node name="LaserButton" type="Area3D"]
+[node name="TerminalButton" type="Area3D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_kwvxl")
+script = ExtResource("1_4b0xi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
