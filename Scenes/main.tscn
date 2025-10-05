@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2f3sn771t0f5"]
+[gd_scene load_steps=12 format=3 uid="uid://d2f3sn771t0f5"]
 
 [ext_resource type="Script" uid="uid://407lxle4oi8u" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Addons/brackeys-proto-controller-main/proto_controller/proto_controller.tscn" id="1_jjgbg"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b8ubeojf3iuwa" path="res://Scenes/extras/wall_arched_2.tscn" id="5_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bnprfbw5w86kp" path="res://Scenes/extras/wall_shelved.tscn" id="6_344ge"]
 [ext_resource type="PackedScene" uid="uid://cff11beli4hf2" path="res://Scenes/LaserGame/LaserGamebutton.tscn" id="8_344ge"]
-[ext_resource type="PackedScene" uid="uid://b7b54wfwf8ut4" path="res://Scenes/TerminalGame/Terminal.tscn" id="9_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://c00u3pwjhjjy7" path="res://Scenes/LaserGame/spawn_point.tscn" id="9_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dpu48vnj1tw1" path="res://Scenes/LaserGame/laser_beam_new.tscn" id="9_ynf5e"]
 
@@ -166,9 +165,12 @@ spawnPoint = NodePath("../SpawnPoint")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.2537, 1.52244, 37.2895)
 
 [node name="Button" parent="." instance=ExtResource("8_344ge")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0.7, 29.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 0.6, 29.3)
+terminalGame = true
 
-[node name="Terminal" parent="." instance=ExtResource("9_d1ilt")]
+[node name="Button2" parent="." instance=ExtResource("8_344ge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2, 0.6, 29.3)
+laserGame = true
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
