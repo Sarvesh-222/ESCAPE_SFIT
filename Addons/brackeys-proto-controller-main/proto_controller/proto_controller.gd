@@ -54,6 +54,9 @@ var freeflying : bool = false
 @onready var collider: CollisionShape3D = $Collider
 @onready var cam: Camera3D = $Head/Camera3D
 
+
+var ristrictMovement:=false
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
@@ -63,6 +66,8 @@ func _ready() -> void:
 	look_rotation.x = head.rotation.x
 	
 	cam.current=is_multiplayer_authority()
+	
+	#terminalEnabled.connect()
 	
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,8 +91,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			disable_freefly()
 
 func _physics_process(delta: float) -> void:
-	# If freeflying, handle freefly and nothing else
-	if(true):#is_multiplayer_authority()):
+	checkForTerminal()
+	
+	if(true and !ristrictMovement):#is_multiplayer_authority()):
+		# If freeflying, handle freefly and nothing else
 		if can_freefly and freeflying:
 			var input_dir := Input.get_vector(input_left, input_right, input_forward, input_back)
 			var motion := (head.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -186,4 +193,13 @@ func check_input_mappings():
 	if can_freefly and not InputMap.has_action(input_freefly):
 		push_error("Freefly disabled. No InputAction found for input_freefly: " + input_freefly)
 		can_freefly = false
+
+#If terminal is Active it Disables player mmovement
+func checkForTerminal():
+	if get_tree().current_scene.has_node("Terminal"):
+		ristrictMovement=true
+		release_mouse()
+	else:
+		ristrictMovement=false
+		#capture_mouse()
 		

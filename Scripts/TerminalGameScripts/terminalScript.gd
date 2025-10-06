@@ -4,11 +4,17 @@ extends Control
 
 var commandSequence:=["scan","ps","kill","nano","systemct1","shutdown"]
 
+signal terminalEnabled
+signal terminalDisabled
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	terminalEnabled.emit()
 	initialPush()
+	
+func _exit_tree() -> void:
+	terminalDisabled.emit()
 	
 
 var canAdd:=true #ensure only one label is added at a time
@@ -30,6 +36,9 @@ func _process(delta: float) -> void:
 			
 	elif (Input.is_action_just_released("enter")):
 		canAdd=true
+		
+	if(Input.is_key_pressed(KEY_ESCAPE)):
+		queue_free()
 
 		
 
@@ -61,6 +70,7 @@ func checkValidity(input:String):
 		#Player Wins
 		if expectedCommand>5:
 			addTextLable("YOU WON :)")
+			queue_free()
 	
 	else:
 		expectedCommand=0
