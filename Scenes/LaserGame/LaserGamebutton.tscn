@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cvls7nd0o6r4h"]
 
-[ext_resource type="Script" path="res://Scripts/LaserGameScripts/GameButton.gd" id="1_kwvxl"]
+[ext_resource type="Script" uid="uid://bsu4xu1rx4yej" path="res://Scripts/LaserGameScripts/GameButton.gd" id="1_kwvxl"]
 [ext_resource type="PackedScene" uid="uid://b7b54wfwf8ut4" path="res://Scenes/TerminalGame/Terminal.tscn" id="2_c2ayt"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_dpep4"]
