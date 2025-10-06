@@ -11,10 +11,14 @@ var playerInRange:=false;
 @export var terminalGame:=false
 
 signal buttonPressed(body:CharacterBody3D)
+@onready var label_3d: Label3D = $Label3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	if(laserGame):
+		label_3d.text="Press E To Disable Lasers"
+	elif (terminalGame):
+		label_3d.text="Press E TO Access Terminal"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

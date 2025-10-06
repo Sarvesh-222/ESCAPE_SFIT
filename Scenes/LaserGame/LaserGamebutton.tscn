@@ -93,7 +93,6 @@ shape = SubResource("CylinderShape3D_kwvxl")
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-text = "Press E To Disable Lasers"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
