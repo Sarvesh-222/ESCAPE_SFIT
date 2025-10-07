@@ -1,14 +1,18 @@
 extends Control
 
-#@onready var freq_slider: HSlider = $VBoxContainer/freq_slider
-#@onready var phase_slider: HSlider = $VBoxContainer/phase_slider
-#@onready var gain_slider: HSlider = $VBoxContainer/gain_slider
-@onready var freq_slider: HSlider = $VBoxContainer/HBoxContainer/VBoxContainer/freq_slider
-@onready var phase_slider: HSlider = $VBoxContainer/HBoxContainer/VBoxContainer2/phase_slider
-@onready var gain_slider: HSlider = $VBoxContainer/HBoxContainer/VBoxContainer3/gain_slider
 
-@onready var graph: Control = $VBoxContainer/Graph
-@onready var feedback: Label = $VBoxContainer/Label
+@onready var freq_slider: HSlider = $ColorRect/VBoxContainer/HBoxContainer/VBoxContainer/freq_slider
+
+@onready var gain_slider: HSlider = $ColorRect/VBoxContainer/HBoxContainer/VBoxContainer3/gain_slider
+
+@onready var graph: Control = $ColorRect/Graph
+@onready var feedback: Label = $ColorRect/Label
+#@onready var camera: Camera2D = $Camera2D
+
+
+var shake_strength := 0.0
+var shake_decay := 3.0
+var noise := 0.0
 
 
 var target_wave = {}
@@ -39,10 +43,17 @@ func _process(_delta):
 	var diff=give_feedback()
 	phase=_updatePhase(_delta)
 	
+	# Update camera shake based on diff
+	#shake_strength = lerp(shake_strength, diff * 2.0, 0.1)  # smoother transitions
+	#_apply_camera_shake(_delta,diff)
+	
+	# Update noise intensity for graph
+	noise = lerp(noise, diff * 0.1, 0.1)
+
+	
 	#Wave reset logic:
 	if(miss_alligned):
 		missAlignTimer+=1*_delta
-		print(missAlignTimer)
 		if(missAlignTimer>=10):
 			resetWave()
 	else:
@@ -105,3 +116,32 @@ func resetWave():
 	
 	feedback.text = "AI scrambled console!"
 	feedback.modulate = Color.ORANGE
+
+#func _apply_camera_shake(delta):
+	#if camera:
+		#if shake_strength > 0.01:
+			#var offset = Vector2(
+				#randf_range(-shake_strength, shake_strength),
+				#randf_range(-shake_strength, shake_strength)
+			#)
+			#camera.offset = offset
+			#shake_strength = max(shake_strength - shake_decay * delta, 0)
+		#else:
+			#camera.offset = Vector2.ZERO
+#func _apply_camera_shake(delta, diff):
+	#if camera:
+		## Scale target shake intensity based on diff
+		#var target_shake = clamp(diff * 10.0, 0.0, 8.0)
+#
+		## Smoothly move current shake strength toward target
+		#shake_strength = lerp(shake_strength, target_shake, delta * 3.0)
+#
+		## Apply shake offset
+		#if shake_strength > 0.01:
+			#var offset = Vector2(
+				#randf_range(-shake_strength, shake_strength),
+				#randf_range(-shake_strength, shake_strength)
+			#)
+			#camera.offset = offset
+		#else:
+			#camera.offset = Vector2.ZERO

@@ -13,6 +13,8 @@ func _ready() -> void:
 	terminalEnabled.emit()
 	initialPush()
 	
+	checkValidity(" ")
+	
 func _exit_tree() -> void:
 	terminalDisabled.emit()
 	
@@ -49,7 +51,7 @@ func addTextLable(text:String):
 	textLabel.bbcode_enabled = true
 	textLabel.fit_content = true
 	#assigh text to label
-	textLabel.text = "[font_size=20][b][color=green]EnemyAi@win:~"+text+"[/color][/b][/font_size]"
+	textLabel.text = "[font_size=30][b][color=green]EnemyAi@win:~"+text+"[/color][/b][/font_size]"
 	#display textlabel
 	v_box_container.add_child(textLabel)
 
