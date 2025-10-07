@@ -22,3 +22,6 @@ func _draw():
 		var y = center_y - sin(t * parent.player_wave.freq + parent.player_wave.phase) * parent.player_wave.gain * 50
 		draw_line(prev_t, Vector2(x, y), Color.CYAN, 2)
 		prev_t = Vector2(x, y)
+
+
+	
