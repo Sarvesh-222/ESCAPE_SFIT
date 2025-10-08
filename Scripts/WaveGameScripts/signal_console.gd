@@ -2,6 +2,7 @@ extends Control
 
 
 @onready var freq_slider: HSlider = $ColorRect/VBoxContainer/HBoxContainer/VBoxContainer/freq_slider
+@onready var freq_rotor: TextureButton = $FreqRotor
 
 @onready var gain_slider: HSlider = $ColorRect/VBoxContainer/HBoxContainer/VBoxContainer3/gain_slider
 
@@ -24,9 +25,14 @@ var target_phase := 0.0
 var target_gain := 1.0
 
 var phase:float
+var freq:float=0
 #var diff 
 var missAlignTimer:=0.0
 var miss_alligned=false;
+
+
+var using_FreqRotor=false
+var using_AmpRotor=false
 
 func _ready():
 	randomize()
@@ -58,12 +64,21 @@ func _process(_delta):
 			resetWave()
 	else:
 		missAlignTimer=0
+		
+	
+	if(using_FreqRotor):
+		if(Input.is_action_pressed("Right_arrow") or Input.is_action_pressed("right")):
+			freq+=.125
+			freq_rotor.rotation+=.05
+		elif(Input.is_action_pressed("Left_arrow") or Input.is_action_pressed("left")):
+			freq-=.125
+			freq_rotor.rotation-=.05
 	
 	
 
 func update_player():
 	player_wave = {
-		"freq": freq_slider.value,
+		"freq": freq,
 		"phase": phase,
 		"gain": gain_slider.value
 	}
@@ -145,3 +160,10 @@ func resetWave():
 			#camera.offset = offset
 		#else:
 			#camera.offset = Vector2.ZERO
+
+
+
+
+
+func _on_button_pressed() -> void:#FREQUENCTY ROTOR
+	using_FreqRotor=target_freq

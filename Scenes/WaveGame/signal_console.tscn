@@ -55,11 +55,6 @@ layout_mode = 2
 text = "Frequency Slider"
 horizontal_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="ColorRect/VBoxContainer/HBoxContainer/VBoxContainer"]
-position = Vector2(263.56, -45.3901)
-scale = Vector2(0.275, 0.275)
-texture = ExtResource("4_hqr5m")
-
 [node name="VBoxContainer3" type="VBoxContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -91,3 +86,16 @@ script = ExtResource("2_8266o")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="FreqRotor" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 142.0
+offset_top = 636.0
+offset_right = 743.0
+offset_bottom = 1251.0
+scale = Vector2(0.49748, 0.468491)
+pivot_offset = Vector2(299.51, 292.428)
+texture_normal = ExtResource("4_hqr5m")
+stretch_mode = 0
+
+[connection signal="pressed" from="FreqRotor" to="." method="_on_button_pressed"]
