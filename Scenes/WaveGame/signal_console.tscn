@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b54fydbav4ra2"]
+[gd_scene load_steps=6 format=3 uid="uid://b54fydbav4ra2"]
 
 [ext_resource type="Script" uid="uid://ck25i8nwse1ux" path="res://Scripts/WaveGameScripts/signal_console.gd" id="1_hj46e"]
 [ext_resource type="Script" uid="uid://boi4mk87boaip" path="res://Scripts/WaveGameScripts/graph.gd" id="2_8266o"]
 [ext_resource type="Texture2D" uid="uid://bbioy2ck1dyil" path="res://OscilloScopeBG.png" id="2_uqu5d"]
 [ext_resource type="Texture2D" uid="uid://dyb55mniob63p" path="res://knob.png" id="4_hqr5m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hqr5m"]
+font_size = 96
+font_color = Color(0, 0, 0, 1)
 
 [node name="SignalConsole" type="Control"]
 layout_mode = 3
@@ -47,13 +51,9 @@ size_flags_vertical = 0
 alignment = 2
 
 [node name="freq_slider" type="HSlider" parent="ColorRect/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
-
-[node name="freqLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Frequency Slider"
-horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -61,13 +61,9 @@ size_flags_horizontal = 3
 alignment = 2
 
 [node name="gain_slider" type="HSlider" parent="ColorRect/VBoxContainer/HBoxContainer/VBoxContainer3"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
-
-[node name="ampLabel" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer/VBoxContainer3"]
-layout_mode = 2
-text = "Amplitude Slider"
-horizontal_alignment = 1
 
 [node name="Graph" type="Control" parent="ColorRect"]
 layout_mode = 1
@@ -88,14 +84,52 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="FreqRotor" type="TextureButton" parent="."]
+modulate = Color(1, 0.952941, 1, 0.8)
 layout_mode = 2
-offset_left = 142.0
+offset_left = 93.0
 offset_top = 636.0
-offset_right = 743.0
+offset_right = 694.0
 offset_bottom = 1251.0
-scale = Vector2(0.49748, 0.468491)
+scale = Vector2(0.45, 0.45)
 pivot_offset = Vector2(299.51, 292.428)
 texture_normal = ExtResource("4_hqr5m")
 stretch_mode = 0
 
+[node name="freqLabel" type="Label" parent="FreqRotor"]
+layout_mode = 2
+offset_left = 65.0433
+offset_top = 222.588
+offset_right = 549.043
+offset_bottom = 354.588
+text = "Frequency"
+label_settings = SubResource("LabelSettings_hqr5m")
+horizontal_alignment = 1
+
+[node name="AmpRotor" type="TextureButton" parent="."]
+modulate = Color(1, 0.952941, 1, 0.8)
+layout_mode = 2
+offset_left = 1241.0
+offset_top = 636.0
+offset_right = 1842.0
+offset_bottom = 1251.0
+scale = Vector2(0.45, 0.45)
+pivot_offset = Vector2(299.51, 292.428)
+texture_normal = ExtResource("4_hqr5m")
+stretch_mode = 0
+
+[node name="ampLabel" type="Label" parent="AmpRotor"]
+layout_mode = 2
+offset_left = 71.71
+offset_top = 227.032
+offset_right = 553.71
+offset_bottom = 359.032
+text = "Amplitude"
+label_settings = SubResource("LabelSettings_hqr5m")
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(963, 547)
+
 [connection signal="pressed" from="FreqRotor" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="AmpRotor" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="AmpRotor" to="." method="_on_amp_rotor_pressed"]
