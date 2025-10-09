@@ -72,6 +72,8 @@ func _process(_delta):
 	
 	#ROTOR LOGICS
 	if(using_FreqRotor):
+		freq_rotor.scale=Vector2(.36,.36)
+		amp_rotor.scale=Vector2(.4,.4)
 		freq_rotor.modulate.a=1
 		amp_rotor.modulate.a=0.4
 		if(Input.is_action_pressed("Right_arrow") or Input.is_action_pressed("right")):
@@ -83,7 +85,8 @@ func _process(_delta):
 			freq_rotor.rotation-=.5*_delta
 			
 	elif(using_AmpRotor):
-		
+		amp_rotor.scale=Vector2(.36,.36)
+		freq_rotor.scale=Vector2(.4,.4)
 		amp_rotor.modulate.a=1
 		freq_rotor.modulate.a=0.4
 		if(Input.is_action_pressed("Right_arrow") or Input.is_action_pressed("right")):
