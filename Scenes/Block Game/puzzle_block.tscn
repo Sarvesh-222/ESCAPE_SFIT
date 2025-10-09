@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://djwg2icxgsc2v"]
+[gd_scene load_steps=3 format=3 uid="uid://djwg2icxgsc2v"]
 
 [ext_resource type="Script" uid="uid://84o3n4311ubp" path="res://Scripts/BlockGame/puzzle_block.gd" id="1_he7bj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_he7bj"]
+size = Vector3(3, 3, 1)
 
 [node name="Puzzle_Block" type="Node3D"]
 script = ExtResource("1_he7bj")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Area3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0)
-use_collision = true
+
+[node name="Label3D" type="Label3D" parent="Area3D/CSGBox3D"]
+transform = Transform3D(0.333333, 0, 0, 0, 0.333333, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_he7bj")
