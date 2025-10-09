@@ -12,14 +12,14 @@ var rotation_speed := 180.0 # degrees per second
 
 var blockSelected:=false
 @onready var label_3d: Label3D = $Area3D/CSGBox3D/Label3D
+@onready var label_3d_2: Label3D = $Area3D/CSGBox3D/Label3D2
 
 func _ready() -> void:
 	area3d.input_event.connect(_on_area3d_input_event)
 	block.rotation_degrees.z=[0,90,180,270,360].pick_random() #initial rotation (random)
-
+	
 func _process(delta: float) -> void:
 	label_3d.text=str(blockSelected)
-
 	
 	if(blockSelected):
 		rotateBlock(delta)
@@ -30,11 +30,13 @@ func rotateBlock(delta:float):
 		# Start rotation
 		rotating = true
 		target_angle = block.rotation_degrees.z - 90.0
+		label_3d_2.text=str(target_angle)
 	elif Input.is_action_just_pressed("right") and not rotating:
 		# Start rotation
 		rotating = true
 		target_angle = block.rotation_degrees.z + 90.0
-			
+		label_3d_2.text=str(target_angle)
+		
 	if rotating:
 		# Rotate smoothly towards the target
 		block.rotation_degrees.z = move_toward(block.rotation_degrees.z, target_angle, rotation_speed * delta)

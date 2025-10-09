@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2f3sn771t0f5"]
+[gd_scene load_steps=16 format=3 uid="uid://d2f3sn771t0f5"]
 
 [ext_resource type="Script" uid="uid://407lxle4oi8u" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Addons/brackeys-proto-controller-main/proto_controller/proto_controller.tscn" id="1_jjgbg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://djwg2icxgsc2v" path="res://Scenes/Block Game/puzzle_block.tscn" id="9_6iyac"]
 [ext_resource type="PackedScene" uid="uid://c00u3pwjhjjy7" path="res://Scenes/LaserGame/spawn_point.tscn" id="9_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dpu48vnj1tw1" path="res://Scenes/LaserGame/laser_beam_new.tscn" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://durq041py6pld" path="res://Scenes/Block Game/puzzle_manager.tscn" id="10_hptm8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,6 +23,15 @@ background_mode = 2
 sky = SubResource("Sky_jjgbg")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l55se"]
+albedo_color = Color(1, 1, 0.0745098, 1)
+emission_enabled = true
+emission = Color(0.985159, 0.635418, 3.85046e-07, 1)
+emission_energy_multiplier = 1.31
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jyof0"]
+material = SubResource("StandardMaterial3D_l55se")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_6bp64")
@@ -176,14 +186,53 @@ laserGame = true
 [node name="Puzzle_Block" parent="." instance=ExtResource("9_6iyac")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.8, 1.2, -4.9)
 
+[node name="MeshInstance3D" parent="Puzzle_Block/Area3D/CSGBox3D" index="2"]
+transform = Transform3D(-7.21238e-09, -0.49, 0, 0.165, -2.14186e-08, 0, 0, 0, 0.45, 0, -0.2, 0.33185)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzle_Block/Area3D/CSGBox3D" index="3"]
+transform = Transform3D(0.165, -2.13163e-14, 0, 1.18424e-15, 0.49, 0, 0, 0, 0.45, 0, 0, 0.33185)
+mesh = SubResource("CylinderMesh_jyof0")
+skeleton = NodePath("../../..")
+
 [node name="Puzzle_Block2" parent="." instance=ExtResource("9_6iyac")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.9, 1.2, -4.9)
+
+[node name="MeshInstance3D" parent="Puzzle_Block2/Area3D/CSGBox3D" index="2"]
+transform = Transform3D(-7.21238e-09, -0.49, 0, 0.165, -2.14186e-08, 0, 0, 0, 0.45, 0, -0.2, 0.33185)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzle_Block2/Area3D/CSGBox3D" index="3"]
+transform = Transform3D(0.165, -2.13163e-14, 0, 1.18424e-15, 0.49, 0, 0, 0, 0.45, 0, 0, 0.33185)
+mesh = SubResource("CylinderMesh_jyof0")
+skeleton = NodePath("../../..")
 
 [node name="Puzzle_Block3" parent="." instance=ExtResource("9_6iyac")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.9, 2.85133, -4.9)
 
+[node name="MeshInstance3D" parent="Puzzle_Block3/Area3D/CSGBox3D" index="2"]
+transform = Transform3D(-7.21238e-09, -0.49, 0, 0.165, -2.14186e-08, 0, 0, 0, 0.45, 0, 0.2, 0.33185)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzle_Block3/Area3D/CSGBox3D" index="3"]
+transform = Transform3D(0.165, -2.13163e-14, 0, 1.18424e-15, 0.49, 0, 0, 0, 0.45, 0, 0, 0.33185)
+mesh = SubResource("CylinderMesh_jyof0")
+skeleton = NodePath("../../..")
+
 [node name="Puzzle_Block4" parent="." instance=ExtResource("9_6iyac")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.853376, 2.85133, -4.9)
 
+[node name="MeshInstance3D" parent="Puzzle_Block4/Area3D/CSGBox3D" index="2"]
+transform = Transform3D(-7.21238e-09, -0.49, 0, 0.165, -2.14186e-08, 0, 0, 0, 0.45, 0, 0.2, 0.33185)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Puzzle_Block4/Area3D/CSGBox3D" index="3"]
+transform = Transform3D(0.165, -2.13163e-14, 0, 1.18424e-15, 0.49, 0, 0, 0, 0.45, 0, 0, 0.33185)
+mesh = SubResource("CylinderMesh_jyof0")
+
+[node name="PuzzleManager" parent="." node_paths=PackedStringArray("blocks") instance=ExtResource("10_hptm8")]
+blocks = [NodePath("../Puzzle_Block"), NodePath("../Puzzle_Block2"), NodePath("../Puzzle_Block3"), NodePath("../Puzzle_Block4")]
+
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
+
+[editable path="Puzzle_Block"]
+[editable path="Puzzle_Block2"]
+[editable path="Puzzle_Block3"]
+[editable path="Puzzle_Block4"]
