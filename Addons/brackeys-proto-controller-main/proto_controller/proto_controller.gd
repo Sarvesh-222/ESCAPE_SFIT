@@ -67,13 +67,26 @@ func _ready() -> void:
 	
 	cam.current=is_multiplayer_authority()
 	
+	# Load the scene resource
+	#var block_scene_res := load("res://Scenes/Block Game/puzzle_block.tscn")
+	#
+	## Instance the scene (not added to tree)
+	#var block_instance :Node3D= block_scene_res.instantiate()
+	#
+	## Connect the signal
+	#block_instance.connect("BlockSelected", Callable(self, "_on_block_clicked"))
+	#
+	## Store in a variable for later use
+	#self._block_instance = block_instance
+	#
 	#terminalEnabled.connect()
 	
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Mouse capturing
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		capture_mouse()
+		#capture_mouse()
+		pass
 	if Input.is_key_pressed(KEY_ESCAPE):
 		release_mouse()
 	if Input.is_key_pressed(KEY_P):
@@ -203,3 +216,10 @@ func checkForTerminal():
 		ristrictMovement=false
 		#capture_mouse()
 		
+func _on_block_clicked(selected: bool):
+	if selected:
+		print("Scene B: Block selected in Scene A!")
+		ristrictMovement=true
+	else:
+		print("Scene B: Block deselected in Scene A!")
+		ristrictMovement=false
