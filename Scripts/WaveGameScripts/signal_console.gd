@@ -48,6 +48,7 @@ func _ready():
 	graph.queue_redraw()
 
 func _process(_delta):
+
 	update_player()
 	graph.queue_redraw()
 	var diff=give_feedback()
@@ -82,6 +83,7 @@ func _process(_delta):
 			freq_rotor.rotation-=.5*_delta
 			
 	elif(using_AmpRotor):
+		
 		amp_rotor.modulate.a=1
 		freq_rotor.modulate.a=0.4
 		if(Input.is_action_pressed("Right_arrow") or Input.is_action_pressed("right")):
@@ -196,9 +198,11 @@ func _apply_camera_shake(delta, diff):
 func _on_button_pressed() -> void:#FREQUENCTY ROTOR
 	using_FreqRotor=true
 	using_AmpRotor=false
+	get_viewport().set_input_as_handled()
 	
 
 
 func _on_amp_rotor_pressed() -> void:
 	using_FreqRotor=false
 	using_AmpRotor=true
+	get_viewport().set_input_as_handled()
