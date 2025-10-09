@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://djwg2icxgsc2v"]
+
+[ext_resource type="Script" uid="uid://84o3n4311ubp" path="res://Scripts/BlockGame/puzzle_block.gd" id="1_he7bj"]
+
+[node name="Puzzle_Block" type="Node3D"]
+script = ExtResource("1_he7bj")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0)
+use_collision = true
