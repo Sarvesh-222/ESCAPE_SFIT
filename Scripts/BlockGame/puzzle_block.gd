@@ -60,7 +60,8 @@ func _on_area3d_input_event(camera: Camera3D, event: InputEvent, position: Vecto
 # Called when you click anywhere else
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if(blockSelected):
+				animation_player.speed_scale = -1
+				animation_player.play("HEXA_HOVER_ANIM")  # play backward
+				animation_player.seek(animation_player.current_animation_length)
 			blockSelected = false
-			animation_player.speed_scale = -1
-			animation_player.play("HEXA_HOVER_ANIM")  # play backward
-			animation_player.seek(animation_player.current_animation_length)
