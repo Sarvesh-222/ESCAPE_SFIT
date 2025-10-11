@@ -34,13 +34,13 @@ func _process(delta: float) -> void:
 		UpDown(delta)
 	elif left_right:			#ONLY HORIZONTAL
 		LeftRight(delta)
-	elif rotate:  			#ONLY ROTATE
+	elif Rotate:  			#ONLY ROTATE
 		animation_player.play("RotateLaser")
 	pass
 
 var isMovingUp:=true
 func UpDown(delta:float):
-	if(rotate): #ROTATE WITH UPDOWN 
+	if(Rotate): #ROTATE WITH UPDOWN 
 		animation_player.play("RotateLaser")
 	
 	if(isMovingUp):   #Up movement
@@ -58,22 +58,22 @@ func UpDown(delta:float):
 			
 var isMovingLeft:=false
 func LeftRight(delta:float):
-	if(rotate):
+	if(Rotate):
 		animation_player.play("RotateLaser")
 	
 	
-		if !isMovingLeft:  #Right Movement
-			if position.x<init_positon_x+Rangee:
-				position.x+=moveSpeed*delta
-			elif position.x>= init_positon_x+Rangee:
-				isMovingLeft=true
-				init_positon_x=position.x
-		else:               #lEFT Movement
-			if position.x>init_positon_x-Rangee:
-				position.x-=moveSpeed*delta
-			elif position.x<= init_positon_x-Rangee:
-				isMovingLeft=false
-				init_positon_x=position.x
+	if !isMovingLeft:  #Right Movement
+		if position.x<init_positon_x+Rangee:
+			position.x+=moveSpeed*delta
+		elif position.x>= init_positon_x+Rangee:
+			isMovingLeft=true
+			init_positon_x=position.x
+	else:               #lEFT Movement
+		if position.x>init_positon_x-Rangee:
+			position.x-=moveSpeed*delta
+		elif position.x<= init_positon_x-Rangee:
+			isMovingLeft=false
+			init_positon_x=position.x
 			
 
 
