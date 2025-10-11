@@ -3,7 +3,7 @@ extends Node3D
 var peer=ENetMultiplayerPeer.new()
 @export var playerScene:PackedScene
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
-
+@export var Spawnpoint:Area3D
 
 func _on_host_pressed() -> void:
 	peer.create_server(1027)
@@ -19,6 +19,7 @@ func _on_join_pressed() -> void:
 	
 func add_Player(id=1):
 	var player= playerScene.instantiate();
+	player.global_position=Spawnpoint.global_position
 	player.name=str(id)
 	call_deferred("add_child",player)
 	
