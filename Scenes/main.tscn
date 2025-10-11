@@ -1,15 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2f3sn771t0f5"]
+[gd_scene load_steps=12 format=3 uid="uid://d2f3sn771t0f5"]
 
 [ext_resource type="Script" uid="uid://407lxle4oi8u" path="res://Scripts/main.gd" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Addons/brackeys-proto-controller-main/proto_controller/proto_controller.tscn" id="1_jjgbg"]
-[ext_resource type="PackedScene" uid="uid://c6pjq0knegrw8" path="res://Scenes/extras/wall_corner_2.tscn" id="4_21xkr"]
-[ext_resource type="PackedScene" uid="uid://b8ubeojf3iuwa" path="res://Scenes/extras/wall_arched_2.tscn" id="5_6bp64"]
-[ext_resource type="PackedScene" uid="uid://bnprfbw5w86kp" path="res://Scenes/extras/wall_shelved.tscn" id="6_344ge"]
 [ext_resource type="PackedScene" uid="uid://c2nfdlf28lxkm" path="res://Scenes/LaserGame/LaserGamebutton.tscn" id="8_344ge"]
 [ext_resource type="PackedScene" uid="uid://c00u3pwjhjjy7" path="res://Scenes/LaserGame/spawn_point.tscn" id="9_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dpu48vnj1tw1" path="res://Scenes/LaserGame/laser_beam_new.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://durq041py6pld" path="res://Scenes/Block Game/puzzle_manager.tscn" id="10_hptm8"]
-[ext_resource type="PackedScene" uid="uid://4s66tfgyqrxi" path="res://Scenes/Block Game/GridWall.tscn" id="11_6iyac"]
+[ext_resource type="PackedScene" uid="uid://bak8ltrhbmlv5" path="res://Scenes/CSGStairMaker3D.tscn" id="11_6iyac"]
 [ext_resource type="PackedScene" uid="uid://dsb4l8jkavooh" path="res://Scenes/Block Game/puzzle_blockHEXA.tscn" id="11_d1ilt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
@@ -25,9 +22,10 @@ sky = SubResource("Sky_jjgbg")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("Spawnpoint")]
 script = ExtResource("1_6bp64")
 playerScene = ExtResource("1_jjgbg")
+Spawnpoint = NodePath("SpawnPoint")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bo1nx")
@@ -93,51 +91,6 @@ size = Vector3(80, 1, 80)
 
 [node name="Walls" type="Node" parent="."]
 
-[node name="wall_corner2" parent="Walls" instance=ExtResource("4_21xkr")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.9, 0.5, 28.8)
-
-[node name="wall_arched2" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.5, 28.6)
-
-[node name="wall_arched3" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(0.999993, 0.0025096, 0.00293126, -0.00250811, 0.999997, -0.000511496, -0.00293253, 0.000504144, 0.999996, 8.6, 0.5, 28.6)
-
-[node name="wall_arched4" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.9, 0.5, 24.7)
-
-[node name="wall_arched5" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.9, 0.5, 16.7)
-
-[node name="wall_arched9" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.8, 0.5, 16.7)
-
-[node name="wall_arched10" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.8, 0.5, 20.6)
-
-[node name="wall_arched11" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.8, 0.5, 24.6)
-
-[node name="wall_corner3" parent="Walls" instance=ExtResource("4_21xkr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.1, 0.5, 28.5)
-
-[node name="wall_corner4" parent="Walls" instance=ExtResource("4_21xkr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.75, 0.5, 12.25)
-
-[node name="wall_arched6" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.95, 0.5, 12.45)
-
-[node name="wall_arched8" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.05, 0.5, 12.45)
-
-[node name="wall_arched7" parent="Walls" instance=ExtResource("5_6bp64")]
-transform = Transform3D(-0.999993, -0.0025096, -0.00293135, -0.00250811, 0.999997, -0.000511496, 0.00293262, -0.000504144, -0.999996, 1.25, 0.5, 12.45)
-
-[node name="wall_corner5" parent="Walls" instance=ExtResource("4_21xkr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.15, 0.5, 12.55)
-
-[node name="wall_shelved" parent="Walls" instance=ExtResource("6_344ge")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 12.8, 0.5, 20.5)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Host" type="Button" parent="CanvasLayer"]
@@ -175,40 +128,55 @@ terminalGame = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.2, 0.6, 29.3)
 laserGame = true
 
-[node name="PuzzleManager" parent="." node_paths=PackedStringArray("blocks") instance=ExtResource("10_hptm8")]
+[node name="CSGStairMaker3D" parent="." instance=ExtResource("11_6iyac")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.3, 2.7, 2.95)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(7.9, 4.6, 3.2)
+num_stairs = 15
+
+[node name="CSGStairMaker3D2" parent="." instance=ExtResource("11_6iyac")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 3.3, 2.7, -4.75)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(7.9, 4.6, 3.2)
+num_stairs = 15
+
+[node name="PuzzleGame" type="Node" parent="."]
+
+[node name="PuzzleManager" parent="PuzzleGame" node_paths=PackedStringArray("blocks") instance=ExtResource("10_hptm8")]
 blocks = [NodePath("../Puzzle_Block5"), NodePath("../Puzzle_Block6"), NodePath("../Puzzle_Block7"), NodePath("../Puzzle_Block8")]
 
-[node name="Puzzle_Block5" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Puzzle_Block5" parent="PuzzleGame" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.66313, 2.74614, -4.62364)
 
-[node name="Puzzle_Block6" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Puzzle_Block6" parent="PuzzleGame" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.26313, 2.74614, -4.62364)
 
-[node name="Puzzle_Block7" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Puzzle_Block7" parent="PuzzleGame" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.96313, 4.04614, -4.62364)
 
-[node name="Puzzle_Block10" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Puzzle_Block10" parent="PuzzleGame" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.56313, 4.04614, -4.62364)
 
-[node name="Puzzle_Block8" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Puzzle_Block8" parent="PuzzleGame" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.96313, 1.44614, -4.62364)
 
-[node name="Puzzle_Block9" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Puzzle_Block9" parent="PuzzleGame" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.46313, 1.44614, -4.62364)
 
-[node name="Puzzle_Block11" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Puzzle_Block11" parent="PuzzleGame" instance=ExtResource("11_d1ilt")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.763127, 2.74614, -4.62364)
-
-[node name="Node3D" parent="." instance=ExtResource("11_6iyac")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2.1, -3)
 
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
 
-[editable path="Puzzle_Block5"]
-[editable path="Puzzle_Block6"]
-[editable path="Puzzle_Block7"]
-[editable path="Puzzle_Block10"]
-[editable path="Puzzle_Block8"]
-[editable path="Puzzle_Block9"]
-[editable path="Puzzle_Block11"]
+[editable path="PuzzleGame/Puzzle_Block5"]
+[editable path="PuzzleGame/Puzzle_Block6"]
+[editable path="PuzzleGame/Puzzle_Block7"]
+[editable path="PuzzleGame/Puzzle_Block10"]
+[editable path="PuzzleGame/Puzzle_Block8"]
+[editable path="PuzzleGame/Puzzle_Block9"]
+[editable path="PuzzleGame/Puzzle_Block11"]
